@@ -1,0 +1,184 @@
+/ # hbase shell
+2023-03-16 17:50:10,648 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 1.3.2, r1bedb5bfbb5a99067e7bc54718c3124f632b6e17, Mon Mar 19 18:47:19 UTC 2018
+
+hbase(main):001:0> create 'ticket_booking','Passbio','busdetails','staffdetails'
+0 row(s) in 1.9210 seconds
+
+=> Hbase::Table -ticket_booking 
+hbase(main):002:0> list
+TABLE                                                                                                                                                           
+family                                                                                                                                                          
+1 row(s) in 0.0590 seconds
+
+=> ["family"]
+hbase(main):003:0> put 'ticket_booking','01','Passbio:name','ram'
+0 row(s) in 0.3020 seconds
+
+hbase(main):004:0> put 'ticket_booking','01','Passbio:age','30'
+0 row(s) in 0.0280 seconds
+
+hbase(main):005:0> put 'ticket_booking','01','Passbio:mobileno','9876543210'
+0 row(s) in 0.0250 seconds
+
+hbase(main):006:0> put 'ticket_booking','01','busdetails:name','dolphink'
+0 row(s) in 0.0140 seconds
+
+hbase(main):008:0> put 'ticket_booking','01','busdetails:noseat','60'
+0 row(s) in 0.0300 seconds
+
+hbase(main):009:0> put 'ticket_booking','01','staffdetails:name','subhash'
+0 row(s) in 0.0140 seconds
+
+hbase(main):010:0> put 'ticket_booking','01','staffdetails:type','conductor'
+0 row(s) in 0.0190 seconds
+
+hbase(main):011:0> put 'ticket_booking','01','staffdetails:salary','10000'
+0 row(s) in 0.0220 seconds
+
+hbase(main):012:0> put 'ticket_booking','02','Passbio:name','Bob'
+0 row(s) in 0.0270 seconds
+
+hbase(main):013:0> put 'ticket_booking','02','busdetails:bname','sachin'
+0 row(s) in 0.0220 seconds
+
+hbase(main):014:0> put 'ticket_booking','02','Passbio:mobileno','9856742310'
+0 row(s) in 0.0160 seconds
+
+hbase(main):015:0> put 'ticket_booking','02','staffdetails:name','karan'
+0 row(s) in 0.0270 seconds
+
+hbase(main):016:0> put 'ticket_booking','03','Passbio:name','Dhiya'
+0 row(s) in 0.0250 seconds
+
+hbase(main):017:0> put 'ticket_booking','03','Passbio:mobileno','9384470129'
+0 row(s) in 0.0200 seconds
+
+hbase(main):018:0> put 'ticket_booking','03','busdetails:name','krishna'
+0 row(s) in 0.0290 seconds
+
+hbase(main):019:0> put 'ticket_booking','03','busdetails:noseat','59'
+0 row(s) in 0.0200 seconds
+
+hbase(main):020:0> put 'ticket_booking','03','staffdetails:name','saran'
+0 row(s) in 0.0190 seconds
+
+hbase(main):021:0> put 'ticket_booking','03','staffdetails:salary','26000'
+0 row(s) in 0.0250 seconds
+
+hbase(main):022:0> get 'ticket_booking','01'
+COLUMN                                       CELL                                                                                                                  
+ staffdetails:salary                         timestamp=1678990472589, value=10000                                                                                 
+ staffdetails:type                           timestamp=1678990435991, value=conductor                                                                                
+ staffdetails:name                           timestamp=1678990078779, value=subhash                                                                             
+ Passbio:mobileno                            timestamp=1678990151721, value=9876543210                                                                     
+ Passbio:age                                 timestamp=1678990107273, value=30                                                                             
+ Passbio:name                                timestamp=1678989957023, value=ram                                                                                
+ busdetails:noseat                           timestamp=1678990377698, value=60                                                                                
+ busdetails:name                             timestamp=1678990340801, value=dolphink                                                                              
+1 row(s) in 0.1660 seconds
+
+hbase(main):023:0> get 'family','02'
+COLUMN                                       CELL                                                                                                                  
+ busdetails:name                             timestamp=1678990877495, value=sachin                                                                                
+ staffdetails:name                           timestamp=1678990697077, value=karan                                                                        
+ Passbio:mobileno                           timestamp=1678990789753, value=9856742310                                                                             
+ Passbio:name                                timestamp=1678990632340, value=Bob                                                                                    
+1 row(s) in 0.0490 seconds
+
+hbase(main):024:0> get 'stu_details','03'
+COLUMN                                       CELL                                                                                                                  
+ staffdetails:salary                         timestamp=1678991191832, value=26000                                                                                
+ staffdetails:name                           timestamp=1678991043431, value=saran                                                                            
+ Passbio:mobileno                            timestamp=1678990957427, value=9384470129                                                                                  
+ Passbio:name                                timestamp=1678990989731, value=dhivya                                                                                    
+ busdetails:noseat                           timestamp=1678991104761, value=59                                                                                 
+ busdetails:name                             timestamp=1678991138389, value=krishna                                                                             
+1 row(s) in 0.0720 seconds
+
+hbase(main):025:0> scan 'stu_details'
+ROW                                       COLUMN+CELL                                                                                                           
+ 01                                       column=staffdetails:salary, timestamp=1678990472589, value=10000                                                       
+ 01                                       column=staffdetails:type, timestamp=1678990435991, value=conductor                                                       
+ 01                                       column=staffdetails:name, timestamp=1678990078779, value=subhash                                                      
+ 01                                       column=Passbio:mobileno, timestamp=1678990151721, value=9876543210                                                
+ 01                                       column=Passbio:age, timestamp=1678990107273, value=30                                                   
+ 01                                       column=Passbio:name, timestamp=1678989957023, value=ram                                                          
+ 01                                       column=busdetails:noseat, timestamp=1678990377698, value=60                                                      
+ 01                                       column=busdetails:name, timestamp=1678990340801, value=dolphink                                                     
+ 02                                       column=busdetails:name, timestamp=1678990877495, value=sachin                                                       
+ 02                                       column=staffdetails:name, timestamp=1678990697077, value=karan                                                  
+ 02                                       column=Passbio:mobileno, timestamp=1678990789753, value=9856742310                                                    
+ 02                                       column=Passbio:name, timestamp=1678990632340, value=Bob                                                               
+ 03                                       column=staffdetails:salary, timestamp=1678991191832, value=26000                                                        
+ 03                                       column=staffdetails:name, timestamp=1678991043431, value=saran                                                    
+ 03                                       column=Passbio:mobileno, timestamp=1678990957427, value=9384470129                                                             
+ 03                                       column=Passbio:name, timestamp=1678990989731, value=Dhivya                                                           
+ 03                                       column=busdetails:noseat, timestamp=1678991104761, value=59                                                         
+ 03                                       column=busdetails:name, timestamp=1678991138389, value=krishna                                                     
+3 row(s) in 0.2030 seconds
+
+hbase(main):026:0> delete 'ticket_booking','01','passbio:mobileno'
+0 row(s) in 0.0180 seconds
+
+hbase(main):027:0> get 'ticket_booking','01'
+COLUMN                                       CELL                                                                                                                  
+ staffdetails:salary                         timestamp=1678990472589, value=10000                                                                                 
+ staffdetails:type                           timestamp=1678991576213, value=conductor                                                                                 
+ staffdetails:name                           timestamp=1678990078779, value=subhash                                                                               
+ Passbio:age                                 timestamp=1678990151721, value=30                                                                     
+ Passbio:name                                timestamp=1678990107273, value=ram                                                                             
+ busdetails:noseat                           timestamp=1678989957023, value=60                                                                                
+ busdetails:name                             timestamp=1678990377698, value=dolphink                                                                                
+                                                                                
+1 row(s) in 0.0900 seconds
+
+hbase(main):028:0> put 'ticket_booking','02','busdetails:timing','9am'
+0 row(s) in 0.0250 seconds
+
+hbase(main):029:0> get 'ticket_booking','02'
+COLUMN                                       CELL                                                                                                                  
+ busdetails:name                             timestamp=1678990877495, value=sachin                                                                                
+ staffdetails:name                           timestamp=1678990697077, value=karan                                                                        
+ Passbio:mobileno                            timestamp=1678990789753, value=9856742310                                                                             
+ Passbio:name                                timestamp=1678990632340, value=Bob                                                                                    
+ busdetails:timing                           timestamp=1678991822022, value=9am                                                                           
+1 row(s) in 0.0470 seconds
+
+hbase(main):030:0> delete 'ticket_booking','03','staffdeatils:salary','15000'
+0 row(s) in 0.0870 seconds
+
+hbase(main):031:0> get 'ticket_booking','03'
+COLUMN                                       CELL                                                                                                                  
+ staffdetails:salary                         timestamp=1678991043431, value=15000                                                                            
+ staffdetails:name                           timestamp=1678990957427, value=saran                                                                                 
+ Passbio:mobileno                            timestamp=1678990989731, value=9384470129                                                                                    
+ Passbio:name                                timestamp=1678991104761, value=dhivya                                                                                  
+ busdetails:noseat                           timestamp=1678991191832, value=59
+busdetails:name                              timestamp=1678991138389, value=krishna                                                                              
+1 row(s) in 0.0540 seconds
+
+hbase(main):032:0> scan 'ticket_booking'
+ROW                                       COLUMN+CELL                                                                                                           
+ 01                                       column=staffdetails:salary,timestamp=1678990472589,value=10000                                                       
+ 01                                       column=staffdetails:type,timestamp=1678991576213, value=conductor                                                         
+ 01                                       column= staffdetails:name,timestamp=1678990078779, value=subhash
+ 01                                       column=Passbio:age,timestamp=1678990151721, value=30                                                
+ 01                                       column=Passbio:name,timestamp=1678990107273, value=ram                                                   
+ 01                                       column=busdetails:noseat,timestamp=1678989957023, value=60                                                           
+ 01                                       column=busdetails:name,timestamp=1678990377698, value=dolphink                                                      
+ 02                                       column=busdetails:name,timestamp=1678990877495, value=sachin                                                     
+ 02                                       column=staffdetails:name,timestamp=1678990697077, value=karan                                                       
+ 02                                       column=Passbio:mobileno,timestamp=1678990789753, value=9856742310                                                  
+ 02                                       column=Passbio:name,timestamp=1678990632340, value=Bob                                                    
+ 02                                       column=busdetails:timing,timestamp=1678991822022, value=9am
+ 03                                       column=staffdetails:salary,timestamp=1678991043431, value=15000                                                 
+ 03                                       column=staffdetails:name,timestamp=1678990957427, value=saran                                                    
+ 03                                       column=Passbio:mobileno,timestamp=1678990989731, value=9384470129                                                             
+ 03                                       column=Passbio:name,timestamp=1678991104761, value=dhivya                                                            
+ 03                                       column=busdetails:noseat,timestamp=1678991191832, value=59                                                         
+ 03                                       column=busdetails:name,timestamp=1678991138389, value=krishna                                                     
+3 row(s) in 0.1440 seconds
+
