@@ -8,7 +8,7 @@ In this ticket_booking table there are three columns named pass bio, bus details
 
 ![WhatsApp Image 2023-03-18 at 10 04 32 PM](https://user-images.githubusercontent.com/124055684/226121094-f4f3d4b0-5493-4eb9-86c9-eb01ab57e81b.jpeg)
 
-    I deleted the values of row no 01 of mobileno in pass bio.In the second row I inserted the timing in bus details column using put keyword column using put keyword. finally I inserted the last row's updated the salary in staff details using delete keyword.
+   I deleted the values of row no 01 of mobileno in pass bio.In the second row I inserted the timing in bus details column using put keyword column using put keyword. finally I inserted the last row's updated the salary in staff details using delete keyword.
 
 OPERATION USED:
 
