@@ -10,10 +10,10 @@ hbase(main):001:0> create 'ticket_booking','Passbio','busdetails','staffdetails'
 => Hbase::Table -ticket_booking 
 hbase(main):002:0> list
 TABLE                                                                                                                                                           
-family                                                                                                                                                          
+ticket_booking                                                                                                                                                         
 1 row(s) in 0.0590 seconds
 
-=> ["family"]
+=> ["ticket_booking"]
 hbase(main):003:0> put 'ticket_booking','01','Passbio:name','ram'
 0 row(s) in 0.3020 seconds
 
@@ -80,7 +80,7 @@ COLUMN                                       CELL
  busdetails:name                             timestamp=1678990340801, value=dolphink                                                                              
 1 row(s) in 0.1660 seconds
 
-hbase(main):023:0> get 'family','02'
+hbase(main):023:0> get 'ticket_booking','02'
 COLUMN                                       CELL                                                                                                                  
  busdetails:name                             timestamp=1678990877495, value=sachin                                                                                
  staffdetails:name                           timestamp=1678990697077, value=karan                                                                        
@@ -88,7 +88,7 @@ COLUMN                                       CELL
  Passbio:name                                timestamp=1678990632340, value=Bob                                                                                    
 1 row(s) in 0.0490 seconds
 
-hbase(main):024:0> get 'stu_details','03'
+hbase(main):024:0> get 'ticket_booking','03'
 COLUMN                                       CELL                                                                                                                  
  staffdetails:salary                         timestamp=1678991191832, value=26000                                                                                
  staffdetails:name                           timestamp=1678991043431, value=saran                                                                            
@@ -98,7 +98,7 @@ COLUMN                                       CELL
  busdetails:name                             timestamp=1678991138389, value=krishna                                                                             
 1 row(s) in 0.0720 seconds
 
-hbase(main):025:0> scan 'stu_details'
+hbase(main):025:0> scan 'ticket_booking'
 ROW                                       COLUMN+CELL                                                                                                           
  01                                       column=staffdetails:salary, timestamp=1678990472589, value=10000                                                       
  01                                       column=staffdetails:type, timestamp=1678990435991, value=conductor                                                       
